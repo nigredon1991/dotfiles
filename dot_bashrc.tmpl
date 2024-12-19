@@ -20,7 +20,9 @@ export PATH="$PATH":/home/nglazov/reps/stlink/build/Release/
 export PATH="$PATH":/var/lib/snapd/snap/bin/
 export PATH="$PATH":/home/nglazov/.gem/ruby/2.7.0/bin/
 export SHELLCHECK_OPTS="-e SC2155 -e SC1091"
-. /home/nglazov/.bashrc-secret
+
+export TOKEN={{ .token_git | quote }}
+
 alias ntop="nload"
 
 man() {
