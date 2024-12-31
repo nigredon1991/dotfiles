@@ -21,8 +21,6 @@ export PATH="$PATH":/var/lib/snapd/snap/bin/
 export PATH="$PATH":/home/nglazov/.gem/ruby/2.7.0/bin/
 export SHELLCHECK_OPTS="-e SC2155 -e SC1091"
 
-export TOKEN={{ .token_git | quote }}
-
 alias ntop="nload"
 
 man() {
@@ -49,12 +47,12 @@ tl() {
 
 
 if [ -f ~/.fzf.bash ] ; then
-    source ~/.fzf.bash
+    source ~/.fzf.bash 
 else
     eval "$(fzf --bash)"
 fi
 
-[ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git
+[ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 [ -f /usr/share/git/completion/git-completion.bash ] && . /usr/share/git/completion/git-completion.bash
 [ -f /usr/share/git/completion/git-prompt.sh ] && . /usr/share/git/completion/git-prompt.sh
 
@@ -74,7 +72,7 @@ colors() {
 			bgc=${bgc#40} # black
 
 			vals="${fgc:+$fgc;}${bgc}"
-			vals=${vals%%;}
+			vals="${vals%%;}"
 
 			seq0="${vals:+\e[${vals}m}"
 			printf "  %-9s" "${seq0:-(default)}"
@@ -85,7 +83,6 @@ colors() {
 	done
 }
 
-[ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
 # Change the window title of X terminals
 case ${TERM} in
@@ -203,3 +200,7 @@ eval "$(starship init bash)"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
