@@ -25,7 +25,7 @@ chezmoi edit --watch $FILENAME
 
 *no-template*
 ```
-chezmoi edit --watch $FILENAME
+chezmoi edit --apply $FILENAME
 # or
 # edit file $FILENAME
 chezmoi re-add
