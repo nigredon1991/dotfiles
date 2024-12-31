@@ -32,10 +32,6 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
-jenkinsfile_check(){
-	local jenkinsfile=${1:-Jenkinsfile}
-	curl --user user:pass -X POST -F 'jenkinsfile=<'"$jenkinsfile"'' http://$jenkins_url:8080/pipeline-model-converter/validate
-}
 
 tl() {
 	while true; do
@@ -55,6 +51,7 @@ fi
 [ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 [ -f /usr/share/git/completion/git-completion.bash ] && . /usr/share/git/completion/git-completion.bash
 [ -f /usr/share/git/completion/git-prompt.sh ] && . /usr/share/git/completion/git-prompt.sh
+[ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git
 
 colors() {
 	local fgc bgc vals seq0
