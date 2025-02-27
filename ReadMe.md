@@ -30,3 +30,10 @@ chezmoi edit --apply $FILENAME
 # edit file $FILENAME
 chezmoi re-add
 ```
+
+### Example
+```toml
+[data]
+git_name = "<UserName>"
+git_email = "Email"
+```
